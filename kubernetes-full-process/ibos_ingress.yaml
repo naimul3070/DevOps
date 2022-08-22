@@ -1,0 +1,131 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: 'true'
+    nginx.ingress.kubernetes.io/proxy-read-timeout: '3600'
+    nginx.ingress.kubernetes.io/proxy-send-timeout: '3600'
+    nginx.org/websocket-services: "madina-domain-api,madina-front"
+  name: ing-ibosapp
+spec:
+  ingressClassName: ibosio-ingress
+  rules:
+#Madina Group
+  - host: madina.ibos.io
+    http:
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: madina-front
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /domain
+        backend:
+          service:
+            name: madina-domain-api
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /identity
+        backend:
+          service:
+            name: madina-identity-api
+            port:
+              number: 80 
+      - pathType: Prefix
+        path: /partner
+        backend:
+          service:
+            name: madina-partner-api
+            port:
+              number: 80 
+      - pathType: Prefix
+        path: /procurement
+        backend:
+          service:
+            name: madina-procurement-api
+            port:
+              number: 80        
+      - pathType: Prefix
+        path: /wms
+        backend:
+          service:
+            name: madina-wms-api
+            port:
+              number: 80   
+      - pathType: Prefix
+        path: /hcm
+        backend:
+          service:
+            name: madina-hcm-api
+            port:
+              number: 80
+              
+      - pathType: Prefix
+        path: /costmgmt
+        backend:
+          service:
+            name: madina-cost-api
+            port:
+              number: 80
+                        
+      - pathType: Prefix
+        path: /item
+        backend:
+          service:
+            name: madina-item-api
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /fino
+        backend:
+          service:
+            name: madina-finance-api
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /oms
+        backend:
+          service:
+            name: madina-oms-api
+            port:
+              number: 80
+              
+      - pathType: Prefix
+        path: /imp
+        backend:
+          service:
+            name: madina-import-api
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /mes
+        backend:
+          service:
+            name: madina-mes-api
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /asset
+        backend:
+          service:
+            name: madina-asset-api
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /tms
+        backend:
+          service:
+            name: madina-tms-api
+            port:
+              number: 80
+
+#End People Desk Solution Ingress
+  tls:
+    - hosts:
+        - madina.ibos.io
+  
+      secretName: ibosio-ingress-tls

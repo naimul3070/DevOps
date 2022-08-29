@@ -1,9 +1,10 @@
 # welcome to open project 
 
 OpenProject is a web-based project management system for location-independent team collaboration. This free open-source application is released under the GNU General Public License Version 3 and is available as a community edition and a chargeable Enterprise Edition		
-		
-		
-	Add PGP Key	wget -qO- https://dl.packager.io/srv/opf/openproject/key | sudo apt-key add -	
+			
+Add PGP Key	
+
+	wget -qO- https://dl.packager.io/srv/opf/openproject/key | sudo apt-key add -	
 		
 ### Integrate OpenProject repository in Ubuntu 20.04	
 	sudo wget -O /etc/apt/sources.list.d/openproject.list https://dl.packager.io/srv/opf/openproject/stable/12/installer/ubuntu/20.04.repo	

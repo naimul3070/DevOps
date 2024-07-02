@@ -20,6 +20,7 @@ This document provides step-by-step instructions for setting up Nginx web server
 ---
 
 ## Nginx Setup
+    
 
 ### Installation
 
@@ -27,20 +28,18 @@ This document provides step-by-step instructions for setting up Nginx web server
    ```bash
    sudo apt update
 
-Install Nginx:
-bash
-Copy code
-sudo apt install nginx
-Configuration
-Configure Nginx Sites:
+## Install Nginx:
 
-Create configuration files for each domain under /etc/nginx/sites-available/.
+    sudo apt install nginx
 
-Example configuration for buysell.saifsolution.com:
+## Configuration
+### Configure Nginx Sites:
 
-nginx
-Copy code
-server {
+### Create configuration files for each domain under /etc/nginx/sites-available/.
+
+### Example configuration for buysell.saifsolution.com:
+
+    server {
     listen 80;
     server_name buysell.saifsolution.com;
     root /var/www/buysell.saifsolution.com;
@@ -59,69 +58,65 @@ server {
         deny all;
     }
 }
-Enable Sites:
 
-Create symbolic links in /etc/nginx/sites-enabled/ to enable sites:
-bash
-Copy code
-sudo ln -s /etc/nginx/sites-available/buysell.saifsolution.com /etc/nginx/sites-enabled/
-Test and Reload Nginx:
+## Enable Sites:
 
-bash
-Copy code
-sudo nginx -t
-sudo systemctl reload nginx
-SSL Setup with Certbot
-Installing Certbot
-Install Certbot:
-bash
-Copy code
-sudo apt install certbot python3-certbot-nginx
-Generating SSL Certificates
-Generate SSL Certificates:
+    sudo ln -s /etc/nginx/sites-available/buysell.saifsolution.com /etc/nginx/sites-enabled/
 
-Run Certbot for each domain to obtain SSL certificates:
+## Test and Reload Nginx:
 
-bash
-Copy code
-sudo certbot --nginx -d buysell.saifsolution.com -d fixit.saifsolution.com -d it.saifsolution.com -d saifsolution.com -d spevent.saifsolution.com
-Follow the prompts to configure SSL.
+    sudo nginx -t
+    sudo systemctl reload nginx
 
-Auto-Renewal Setup
-Verify Certbot Timer:
 
-Check the status of the Certbot timer for automatic renewal:
+# SSL Setup with Certbot
+### Installing Certbot
+### Install Certbot:
 
-bash
-Copy code
-sudo systemctl status certbot.timer
-Ensure the timer is active and scheduled correctly.
+    sudo apt install certbot python3-certbot-nginx
 
-Manual Renewal Test:
 
-Optionally, test manual certificate renewal before expiry:
+# Generating SSL Certificates
+### Generate SSL Certificates:
 
-bash
-Copy code
-sudo certbot renew --dry-run
-Reload Nginx:
+### Run Certbot for each domain to obtain SSL certificates:
 
-After obtaining SSL certificates, reload Nginx to apply changes:
+    sudo certbot --nginx -d buysell.saifsolution.com -d fixit.saifsolution.com -d it.saifsolution.com -d saifsolution.com -d spevent.saifsolution.com
 
-bash
-Copy code
-sudo systemctl reload nginx
-Conclusion
-This documentation covers the setup of Nginx web server and SSL certificates using Certbot for the domains buysell.saifsolution.com, fixit.saifsolution.com, it.saifsolution.com, saifsolution.com, and spevent.saifsolution.com. Ensure to monitor certificate expiration and renewals periodically.
+#### Follow the prompts to configure SSL.
 
-For further assistance or troubleshooting, refer to Certbot documentation or consult with your system administrator.
+# Auto-Renewal Setup
 
-sql
-Copy code
+### Verify Certbot Timer:
+
+### Check the status of the Certbot timer for automatic renewal:
+
+    sudo systemctl status certbot.timer
+
+### Ensure the timer is active and scheduled correctly.
+
+### Manual Renewal Test:
+
+### Optionally, test manual certificate renewal before expiry:
+
+    sudo certbot renew --dry-run
+
+### Reload Nginx:
+### After obtaining SSL certificates, reload Nginx to apply changes:
+
+    sudo systemctl reload nginx
+
+
+# Conclusion
+#### This documentation covers the setup of Nginx web server and SSL certificates using Certbot for the domains buysell.saifsolution.com, fixit.saifsolution.com, it.saifsolution.com, #### saifsolution.com, and spevent.saifsolution.com. Ensure to monitor certificate expiration and renewals periodically.
+
+#### For further assistance or troubleshooting, refer to Certbot documentation or consult with your system administrator.
+
+
 
 ### Usage:
 1. Copy the above Markdown content into a file named `nginx_ssl_setup.md`.
 2. Save the file.
 3. You can open and view this file with any Markdown viewer or editor.
 
-This document provides a structured guide on setting up Nginx and SSL with Certbot, tailored specifically for
+This document provides a structured guide on setting up Nginx and SSL with Certbot, tailored specifically for your domains. Adjust any specific details or paths as per your server configuration if needed.

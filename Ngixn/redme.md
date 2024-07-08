@@ -20,12 +20,12 @@ Here's a simple diagram illustrating the deployment architecture:
   
 #### 2. Clone the Repositories
 #### Navigate to the project directory:
-
   cd /var/www
 #### Clone the Next.js application repositories:
 
   git clone [your_nextjs_repo] devapi.aayattours.com
   git clone [your_nextjs_repo] devapi.muslimcouplesretreat.com
+  
 ### 3. Install Dependencies and Build the Applications
 #### Install dependencies:
 
